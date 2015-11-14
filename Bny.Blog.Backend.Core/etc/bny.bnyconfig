@@ -1,0 +1,12 @@
+#The title/name of the blog
+bny.blog.frontend.title = bny.io ツ★
+
+#The directory to load all md-files from
+bny.blog.articleDirectory = /home/bgr/Workspace/bny.io/bnyArticles/
+
+#The port to listen to
+bny.blog.service.port = 50119
+
+#The URL template for a quick edit link - uncomment to dissable quick-edit functionality
+#{0} - Will be replaced with the articles's filename
+bny.blog.quickEditLink = https://github.com/bennygr/bnyArticles/edit/master/{0}

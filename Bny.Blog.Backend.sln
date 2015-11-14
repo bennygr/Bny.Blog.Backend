@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bny.Blog.Backend.Core", "Bny.Blog.Backend.Core\Bny.Blog.Backend.Core.csproj", "{2DC97044-8592-4EA0-9B66-C714308D20B9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bny.Blog.Backend.Nancy", "Bny.Blog.Backend.Nancy\Bny.Blog.Backend.Nancy.csproj", "{7338C85B-9D5B-4967-8630-84F64F9C020A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2DC97044-8592-4EA0-9B66-C714308D20B9}.Debug|x86.ActiveCfg = Debug|x86
+		{2DC97044-8592-4EA0-9B66-C714308D20B9}.Debug|x86.Build.0 = Debug|x86
+		{2DC97044-8592-4EA0-9B66-C714308D20B9}.Release|x86.ActiveCfg = Release|x86
+		{2DC97044-8592-4EA0-9B66-C714308D20B9}.Release|x86.Build.0 = Release|x86
+		{7338C85B-9D5B-4967-8630-84F64F9C020A}.Debug|x86.ActiveCfg = Debug|x86
+		{7338C85B-9D5B-4967-8630-84F64F9C020A}.Debug|x86.Build.0 = Debug|x86
+		{7338C85B-9D5B-4967-8630-84F64F9C020A}.Release|x86.ActiveCfg = Release|x86
+		{7338C85B-9D5B-4967-8630-84F64F9C020A}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+EndGlobal
