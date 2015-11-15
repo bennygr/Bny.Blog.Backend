@@ -2,7 +2,7 @@
 bny.blog.frontend.title = bny.io ツ★
 
 #The directory to load all md-files from
-bny.blog.articleDirectory = /home/bgr/Workspace/bny.io/bnyArticles/
+bny.blog.articleDirectory = /home/bgr/Workspace/github/Bny.Blog.Articles/
 
 #The port to listen to
 bny.blog.service.port = 50119
