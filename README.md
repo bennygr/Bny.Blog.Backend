@@ -39,7 +39,8 @@ bny.blog.quickEditLink = https://github.com/bennygr/bnyArticles/edit/master/{0}
 ```
 Start the service
 ```
-Bny.Blog.Backend.Nancy/bin/Release/Bny.Blog.Backend.Nancy.exe
+cd bin
+Bny.Blog.Backend.Nancy.exe
 ```
 
 ####Usage 
