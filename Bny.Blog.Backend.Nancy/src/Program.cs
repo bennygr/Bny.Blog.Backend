@@ -6,6 +6,7 @@ using Bny.Blog.Backend.Core.IOC;
 using Bny.Blog.Backend.Core.Logging;
 using Nancy;
 using Nancy.Hosting.Self;
+using Nancy.Json;
 
 namespace Bny.Blog.Backend.Core.Configuration
 {
@@ -34,6 +35,7 @@ namespace Bny.Blog.Backend.Core.Configuration
 				Uri uri = new Uri(String.Format("http://localhost:{0}",port));
 
 				StaticConfiguration.DisableErrorTraces = false;
+				JsonSettings.MaxJsonLength = Int32.MaxValue;
 				using (var host = new NancyHost(uri))
 				{
 				    logging.Debug(String.Format("Starting bny.blog REST service on {0} ...",uri));

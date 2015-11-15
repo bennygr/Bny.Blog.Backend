@@ -31,7 +31,10 @@ namespace Bny.Blog.Backend.Core.Articles
 		{
 			get
 			{
-				return Content.Substring(0,MetaData.PreviewLength);
+				if(Content.Length > MetaData.PreviewLength){
+					return Content.Substring(0,MetaData.PreviewLength);
+				}
+				return Content;
 			}
 		}
 	

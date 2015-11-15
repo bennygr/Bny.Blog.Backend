@@ -4,6 +4,7 @@ using Bny.Blog.Backend.Core.Articles;
 using Bny.Blog.Backend.Core.IOC;
 using Bny.Blog.Backend.Core.Logging;
 using Nancy;
+using Nancy.Responses;
 
 namespace Bny.Blog.Backend.Nancy
 {
@@ -19,7 +20,13 @@ namespace Bny.Blog.Backend.Nancy
 						() =>  new List<Article>(IOCContainer.Get<IArticleService>().GetAllArticles())
 				);
 	        };
-	
+
+	        Get["/articles/reload"] = parameters =>
+	        {
+				IOCContainer.Get<IArticleService>().ReloadArticles();
+				return HttpStatusCode.OK;
+	        };
+
 	        Get["/articles/tags/{tag}"] = parameters =>
 	        {
 				logging.Debug(String.Format("Searching articles with tags {0}", parameters.tag));
@@ -62,10 +69,13 @@ namespace Bny.Blog.Backend.Nancy
 				}
 				return Negotiate.WithModel(retList).                                            
 					WithHeader("ArticleCount",retList.Count.ToString()).                         
-					WithHeader("PageSize","10"); 
+					WithHeader("PageSize","11").
+					WithView("html").
+					WithContentType("application/JSON");
 			}
 			catch (Exception e)
 			{
+				IOCContainer.Get<ILogging>().Debug(e.Message);
 				return new JsonErrorResponse(e);
 			}
 		}
