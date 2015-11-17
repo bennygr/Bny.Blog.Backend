@@ -23,8 +23,8 @@ namespace Bny.Blog.Backend.Nancy
 
 	        Get["/articles/reload"] = parameters =>
 	        {
-				IOCContainer.Get<IArticleService>().ReloadArticles();
-				return HttpStatusCode.OK;
+				int articleCount = IOCContainer.Get<IArticleService>().ReloadArticles();
+				return String.Format("{0} articles have been loaded @ {1}",articleCount,DateTime.Now);
 	        };
 
 	        Get["/articles/tags/{tag}"] = parameters =>
