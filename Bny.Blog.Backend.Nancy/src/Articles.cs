@@ -21,7 +21,6 @@ namespace Bny.Blog.Backend.Nancy
 				);
 	        };
 
-
 	        Get["/articles/reload"] = parameters =>
 	        {
 				int articleCount = IOCContainer.Get<IArticleService>().ReloadArticles();
@@ -42,6 +41,12 @@ namespace Bny.Blog.Backend.Nancy
 	            {
 	                logging.Debug(String.Format("Searching article with previewCode {0}", parameters.previewCode));
 	                var articleService = IOCContainer.Get<IArticleService>();
+					
+					//when getting the preview we are going to update the article fiews
+					//Improve: maybe we should only update the article with the given preview code
+					articleService.ReloadArticles();
+
+					//Getting the article by preview code
 	                var article = articleService.GetArticleByPreviewCode(parameters.previewCode);
 	                if (article != null)
 	                {
