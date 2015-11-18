@@ -17,6 +17,13 @@ namespace Bny.Blog.Backend.Core.Articles
 		/// <param name="articleName">The unique name of the article</param>
 		/// <returns>The article with the given unique name, or null if no such article was found</returns>
 		Article GetArticle(string articleName);
+
+		/// <summary>
+		///		Gets a specific article by preview code
+		/// </summary>
+		/// <param name="previewCode">The unique preview code of the article</param>
+		/// <returns>The article with the given preview code, or null if no such article was found</returns>
+		Article GetArticleByPreviewCode(string previewCode);
 	
 		/// <summary>
 		///		Gets all known articles

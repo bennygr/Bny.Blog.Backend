@@ -21,6 +21,7 @@ namespace Bny.Blog.Backend.Nancy
 				);
 	        };
 
+
 	        Get["/articles/reload"] = parameters =>
 	        {
 				int articleCount = IOCContainer.Get<IArticleService>().ReloadArticles();
@@ -33,6 +34,27 @@ namespace Bny.Blog.Backend.Nancy
 				return ServeArticleList(
 						() =>  new List<Article>(IOCContainer.Get<IArticleService>().GetByTag(parameters.tag))
 				);
+	        };
+
+	        Get["/articles/preview/{previewCode}"] = parameters =>
+	        {
+	            try
+	            {
+	                logging.Debug(String.Format("Searching article with previewCode {0}", parameters.previewCode));
+	                var articleService = IOCContainer.Get<IArticleService>();
+	                var article = articleService.GetArticleByPreviewCode(parameters.previewCode);
+	                if (article != null)
+	                {
+	                    logging.Debug(String.Format("Article found with previewCode {0}", parameters.previewCode));
+						return article;
+	                }
+	                logging.Error(String.Format("No article found with previewCode {0}", parameters.previewCode));
+	                return HttpStatusCode.NotFound;
+	            }
+	            catch (Exception e)
+	            {
+	                return new JsonErrorResponse(e);
+	            }
 	        };
 	
 	        Get["/articles/{articleName}"] = parameters =>

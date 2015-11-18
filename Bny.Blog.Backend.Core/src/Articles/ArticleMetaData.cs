@@ -46,6 +46,11 @@ namespace Bny.Blog.Backend.Core.Articles
 	            }
 			}
 		}
+
+		/// <summary>
+		///		The preview code of the article, or null for productive articles
+		/// </summary>
+		public string PreviewCode{get;set;}
 	
 		/// <summary>
 		///		The length of text which should be used as preview 

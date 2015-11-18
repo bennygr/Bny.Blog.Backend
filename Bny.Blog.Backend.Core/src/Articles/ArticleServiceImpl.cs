@@ -34,6 +34,15 @@ namespace Bny.Blog.Backend.Core.Articles
 															 articleSource));
 			return articles.Count;
 	    }
+
+		/// <summary>
+		///		Gets all productive articles which does not have a preview code
+		/// </summary>
+		/// <returns>All articles which do not have a preview code set</returns>
+		private List<Article> GetProductiveArticles()
+		{
+			return articles.FindAll(a => String.IsNullOrEmpty(a.MetaData.PreviewCode));
+		}
 	
 	    #region IArticleService implementation
 	
@@ -44,17 +53,23 @@ namespace Bny.Blog.Backend.Core.Articles
 	
 	    public Article GetArticle(string articleName)
 	    {
-	        return articles.Find(a => a.FileName == articleName);
+	        return GetProductiveArticles().Find(a => a.FileName == articleName);
 	    }
+
+		public Article GetArticleByPreviewCode(string previewCode)
+		{
+	        return articles.Find(a => a.MetaData.PreviewCode == previewCode);
+		}
+
 	    public IReadOnlyCollection<Article> GetAllArticles()
 	    { 
-			return articles.AsReadOnly();
+			return GetProductiveArticles().AsReadOnly();
 	    }
 	
 	    public IReadOnlyCollection<Article> GetByTag(string tag)
 		{
 			var ret = new List<Article>();
-			foreach(var article in articles)
+			foreach(var article in GetProductiveArticles())
 			{
 				var tags = article.MetaData.TagsArray;
 				foreach(var t in tags)
