@@ -61,7 +61,31 @@ namespace Bny.Blog.Backend.Nancy
 	                return new JsonErrorResponse(e);
 	            }
 	        };
-	
+			
+	        Get["/articles/preview/publish/{previewCode}"] = parameters =>
+			{
+				try
+				{
+					logging.Debug(String.Format("Publishing article with preview code {0}", parameters.previewCode));
+					var articleService = IOCContainer.Get<IArticleService>();
+					var article = articleService.GetArticleByPreviewCode(parameters.previewCode);
+					if (article != null)
+					{
+						articleService.PublishArticle(article);
+						articleService.ReloadArticles();
+						logging.Debug(String.Format("Article with preview code {0} has been published", parameters.previewCode));
+						return HttpStatusCode.OK;
+					}
+					return HttpStatusCode.NotFound;
+				}
+				catch(Exception e)
+				{
+					logging.Error(e.Message);
+					logging.Error(e.StackTrace);
+					return HttpStatusCode.InternalServerError;		
+				}
+			};
+
 	        Get["/articles/{articleName}"] = parameters =>
 	        {
 	            try

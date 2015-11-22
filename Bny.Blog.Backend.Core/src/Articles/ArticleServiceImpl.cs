@@ -61,6 +61,11 @@ namespace Bny.Blog.Backend.Core.Articles
 	        return articles.Find(a => a.MetaData.PreviewCode == previewCode);
 		}
 
+		public void PublishArticle(Article article)
+		{
+			new Publisher().Publish(article);
+		}
+
 	    public IReadOnlyCollection<Article> GetAllArticles()
 	    { 
 			return GetProductiveArticles().AsReadOnly();

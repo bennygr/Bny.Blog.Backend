@@ -16,7 +16,7 @@ namespace Bny.Blog.Backend.Core.Articles
 	
 	        var article = new Article
 	        {
-	            FileName = fileName,
+	            FullFileName = fileName,
 	            Content = renderer.Render(document),
 				MetaData = ParseMetaData(content)
 	        };

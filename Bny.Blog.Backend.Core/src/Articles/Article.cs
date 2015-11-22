@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using Bny.Blog.Backend.Core.Configuration;
 using Bny.Blog.Backend.Core.IOC;
 
@@ -12,7 +13,18 @@ namespace Bny.Blog.Backend.Core.Articles
 		/// <summary>
 		///		The unique name of the article
 		/// </summary>
-		public string FileName{get;set;}
+		public string FileName
+		{
+			get
+			{
+				return new FileInfo(FullFileName).Name;
+			}
+		}
+
+		/// <summary>
+		///		The full unique name of the article 
+		/// </summary>
+		public string FullFileName{get;set;}
 	
 		/// <summary>
 		///		The article's metadata

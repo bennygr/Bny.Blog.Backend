@@ -20,7 +20,7 @@ namespace Bny.Blog.Backend.Core.Articles
 	        var articleText = 
 	            File.ReadAllText(file.FullName, Encoding.Default);
 			logging.Debug(String.Format("Successfully loaded article {0} from file system.",file.FullName));
-			var article =  parser.Parse(file.Name,articleText);
+			var article =  parser.Parse(file.FullName,articleText);
 			return article;
 	    }
 	

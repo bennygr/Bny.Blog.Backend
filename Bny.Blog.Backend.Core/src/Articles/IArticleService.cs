@@ -24,6 +24,12 @@ namespace Bny.Blog.Backend.Core.Articles
 		/// <param name="previewCode">The unique preview code of the article</param>
 		/// <returns>The article with the given preview code, or null if no such article was found</returns>
 		Article GetArticleByPreviewCode(string previewCode);
+
+		/// <summary>
+		///		Publishs an article by removing the preview code form the article
+		/// </summary>
+		/// <param name="article">The article to publish</param>
+		void PublishArticle(Article article);
 	
 		/// <summary>
 		///		Gets all known articles

@@ -52,6 +52,7 @@
     <Compile Include="src\Articles\AbstractArticleParser.cs" />
     <Compile Include="src\Articles\ArticleMetaData.cs" />
     <Compile Include="src\Utils\DateTimeExtension.cs" />
+    <Compile Include="src\Articles\Publisher.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json">
@@ -81,6 +82,7 @@
     <Reference Include="Tanka.Markdown.Html">
       <HintPath>..\packages\Tanka.Markdown.Html.1.1.5\lib\net45\Tanka.Markdown.Html.dll</HintPath>
     </Reference>
+    <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
